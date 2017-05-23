@@ -1,5 +1,6 @@
 package com.chesnowitz.parser;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.Application;
@@ -22,23 +23,47 @@ import com.parse.SaveCallback;
 public class MainActivity extends AppCompatActivity {
 
 
+  public void redirectActivity() {
+
+    if (ParseUser.getCurrentUser().getString("riderOrDriver").equals("rider")) {
+
+      Intent intent = new Intent(getApplicationContext(), RiderActivity.class);
+      startActivity(intent);
+
+    }
+  }
+
+
   public void letsRoll(View view) {
 
-    Switch userTypeSwitch = (Switch)findViewById(R.id.userTypeSwitch);
+    Switch userTypeSwitch = (Switch) findViewById(R.id.userTypeSwitch);
 
-    Log.i("Switch Position: ", String.valueOf(userTypeSwitch.isChecked()));
+    Log.i("Switch value", String.valueOf(userTypeSwitch.isChecked()));
 
     String userType = "rider";
 
     if (userTypeSwitch.isChecked()) {
+
       userType = "driver";
+
     }
 
     ParseUser.getCurrentUser().put("riderOrDriver", userType);
 
-    Log.i("userType", " redirect as " + userType);
+    ParseUser.getCurrentUser().saveInBackground(new SaveCallback() {
+      @Override
+      public void done(ParseException e) {
+
+        redirectActivity();
+
+      }
+    });
+
+
+
 
   }
+
 
 
   @Override

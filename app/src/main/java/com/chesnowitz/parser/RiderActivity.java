@@ -1,38 +1,37 @@
 package com.chesnowitz.parser;
+import android.*;
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentActivity;
+import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
-        import android.*;
-        import android.Manifest;
-        import android.content.Context;
-        import android.content.pm.PackageManager;
-        import android.location.Location;
-        import android.location.LocationListener;
-        import android.location.LocationManager;
-        import android.os.Build;
-        import android.support.annotation.NonNull;
-        import android.support.v4.app.ActivityCompat;
-        import android.support.v4.app.FragmentActivity;
-        import android.os.Bundle;
-        import android.support.v4.content.ContextCompat;
-        import android.util.Log;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.Toast;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseGeoPoint;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
-        import com.google.android.gms.maps.CameraUpdateFactory;
-        import com.google.android.gms.maps.GoogleMap;
-        import com.google.android.gms.maps.OnMapReadyCallback;
-        import com.google.android.gms.maps.SupportMapFragment;
-        import com.google.android.gms.maps.model.LatLng;
-        import com.google.android.gms.maps.model.MarkerOptions;
-        import com.parse.FindCallback;
-        import com.parse.ParseException;
-        import com.parse.ParseGeoPoint;
-        import com.parse.ParseObject;
-        import com.parse.ParseQuery;
-        import com.parse.ParseUser;
-        import com.parse.SaveCallback;
-
-        import java.util.List;
+import java.util.List;
 
 public class RiderActivity extends FragmentActivity implements OnMapReadyCallback {
 
